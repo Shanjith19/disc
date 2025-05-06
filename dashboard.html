@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Available Discounts</h2>
+    <ul>
+        {% for discount in discounts %}
+            <li>
+                <h3>{{ discount.title }}</h3>
+                <p>{{ discount.description }}</p>
+                <p>Discount: {{ discount.percentage }}%</p>
+                <p>Valid till: {{ discount.end_date }}</p>
+                <a href="{% url 'add_to_cart' discount.id %}">Add to Cart</a>
+            </li>
+        {% empty %}
+            <p>No discounts available right now.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'view_cart' %}">View Cart</a>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<h2>Your Cart</h2>
+<ul>
+    {% for item in cart.discounts.all %}
+        <li>{{ item.title }} - {{ item.percentage }}%</li>
+    {% endfor %}
+</ul>
+<p>Total: {{ cart.total_amount }}</p>
+<a href="{% url 'checkout' %}">Proceed to Payment</a>

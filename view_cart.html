@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h2>Your Cart</h2>
+    <ul>
+        {% for discount in cart.discounts.all %}
+            <li>
+                <h3>{{ discount.title }}</h3>
+                <p>{{ discount.description }}</p>
+                <p>Discount: {{ discount.percentage }}%</p>
+            </li>
+        {% empty %}
+            <p>Your cart is empty!</p>
+        {% endfor %}
+    </ul>
+    <h3>Total: ₹{{ cart.total_amount }}</h3>
+    <form method="POST" action="{% url 'process_payment' %}">
+        {% csrf_token %}
+        <button type="submit">Proceed to Payment</button>
+    </form>
+</body>
+</html>

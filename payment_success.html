@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+</head>
+<body>
+    <h2>Payment Successful</h2>
+    <p>Transaction ID: {{ payment.transaction_id }}</p>
+    <p>Amount Paid: ₹{{ payment.amount }}</p>
+    <a href="{% url 'dashboard' %}">Go back to dashboard</a>
+</body>
+</html>
